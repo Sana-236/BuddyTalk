@@ -1,0 +1,70 @@
+.chatwindow {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  background-color: #f9f9f9;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.frienddp {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  color: #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.friendname {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.talkspace {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.message-you {
+  background-color: #007aff;
+  color: white;
+  margin-left: auto;
+}
+
+.message-friend {
+  background-color: #e0e0e0;
+  color: #333;
+}
