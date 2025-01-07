@@ -6,6 +6,7 @@ import ChatWindow from './ChatWindow';
 const App = () => {
   const [messages, setMessages] = useState({});
   const [currentFrnd, setCurrentFrnd] = useState(null);
+  const [draft,setDraft]=useState({});
 
   const friends = [
     { id: 1, name: 'Sana' },
@@ -19,9 +20,13 @@ const App = () => {
         ...prevMessages,
         [currentFrnd.id]: [
           ...(prevMessages[currentFrnd.id] || []),
-          { sender: 'you', text: message },
+          { sender: 'you', text: message,
+          timestamp:new Date().toLocaleTimeString()},
         ],
       }));
+        setDraft((prev)=>({
+            ...prev,[currentFrnd.id]:' ',
+        }));
     }
   };
 
@@ -32,18 +37,25 @@ const App = () => {
   const handleBackToFriends = () => {
     setCurrentFrnd(null);
   };
+    const handledraft=()=>{
+        setDraft((prev)=>({
+            ...prev,[friends.id]:drafts,
+        }));
+    };
 
   return (
     <div className="Buddyapp">
       <h1 className="app-title">BuddyTalk</h1>
       {!currentFrnd ? (
-        <FriendList friends={friends} onSelectFriend={handleSelectFriend} />
+        <FriendList friends={friends}message={messages} onSelectFriend={handleSelectFriend} />
       ) : (
         <ChatWindow
           messages={messages[currentFrnd.id] || []}
           friend={currentFrnd}
+        draft={draft[currentFrnd.id]||' '}
           onSendMessage={handleSendMessage}
           onBack={handleBackToFriends}
+            ondraft={handledraft}
         />
       )}
     </div>
