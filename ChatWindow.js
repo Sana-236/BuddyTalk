@@ -2,7 +2,7 @@ import React from 'react';
 import MessageInput from './MessageInput';
 import './ChatWindow.css';
 
-const ChatWindow = ({ messages, friend, onSendMessage, onBack }) => {
+const ChatWindow = ({ messages, friend, draft, ondraft, onSendMessage, onBack }) => {
   return (
     <div className="chatwindow">
       <div className="header">
@@ -26,7 +26,10 @@ const ChatWindow = ({ messages, friend, onSendMessage, onBack }) => {
           </div>
         ))}
       </div>
-      <MessageInput onSend={onSendMessage} />
+      <MessageInput 
+        onSend={onSendMessage}
+        draft={draft}
+        ondraft={(draftmessage)=>ondraft(friend.id,draftmessage)}/>
     </div>
   );
 };
